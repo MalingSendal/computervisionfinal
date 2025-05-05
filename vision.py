@@ -12,13 +12,13 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
 
-# Initialize MediaPipe Hands
+# initialize MediaPipe Hands
 mp_hands = mp.solutions.hands
 mp_drawing = mp.solutions.drawing_utils
 hands = mp_hands.Hands(static_image_mode=True, max_num_hands=1, 
                       min_detection_confidence=0.5)
 
-# Configuration
+# config
 DATASET_DIR = 'datasets'
 MODEL_PATH = 'asl_model.pkl'
 IMAGE_EXTENSIONS = ('.jpg', '.jpeg', '.png')
@@ -61,7 +61,7 @@ def load_dataset():
 
 def train_model():
     """Train and save the ASL recognition model"""
-    # Create a black image for status display
+    # latar hitam untuk training status
     status_img = np.zeros((300, 600, 3), dtype=np.uint8)
     
     cv2.putText(status_img, "Loading dataset...", (50, 50), 
@@ -166,11 +166,11 @@ def show_menu():
     """Display graphical menu for the application"""
     menu_img = np.zeros((400, 600, 3), dtype=np.uint8)
     
-    # Draw menu title
+    # title menu
     cv2.putText(menu_img, "ASL Hand Sign Recognition System", (50, 50), 
                cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 255), 2)
     
-    # Draw menu options
+    # option menu
     cv2.putText(menu_img, "1. Train model on existing dataset", (50, 120), 
                cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
     cv2.putText(menu_img, "2. Start real-time ASL recognition", (50, 180), 
@@ -178,7 +178,7 @@ def show_menu():
     cv2.putText(menu_img, "3. Exit", (50, 240), 
                cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
     
-    # Draw instructions
+    # instruction on what to press
     cv2.putText(menu_img, "Press 1, 2 or 3 to select option", (50, 320), 
                cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 1)
     cv2.putText(menu_img, "Press ESC to close window", (50, 350), 
