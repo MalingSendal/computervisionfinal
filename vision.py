@@ -1,3 +1,6 @@
+#dependecies needed:
+# pip install opencv-python mediapipe scikit-learn numpy
+
 import os
 import cv2
 import numpy as np
