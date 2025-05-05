@@ -1,2 +1,2 @@
 # computervisionfinal
-buat projek semester rendy
+buat projek semester
