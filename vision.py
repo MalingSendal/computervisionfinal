@@ -204,7 +204,7 @@ def main():
     """Main program loop"""
     if not os.path.exists(DATASET_DIR):
         os.makedirs(DATASET_DIR)
-        # Show popup message about dataset folder
+        # popup message about dataset folder
         info_img = np.zeros((200, 600, 3), dtype=np.uint8)
         cv2.putText(info_img, f"Created {DATASET_DIR} folder", (50, 50), 
                    cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
