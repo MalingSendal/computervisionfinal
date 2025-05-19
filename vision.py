@@ -60,7 +60,7 @@ def load_dataset():
     return np.array(X), np.array(y)
 
 def train_model():
-    """Train and save the ASL recognition model"""
+    """Train and save the SIBI recognition model"""
     # latar hitam untuk training status
     status_img = np.zeros((300, 600, 3), dtype=np.uint8)
     
@@ -114,7 +114,7 @@ def train_model():
     return model
 
 def recognize_asl_sign():
-    """Real-time ASL sign recognition from webcam"""
+    """Real-time SIBI sign recognition from webcam"""
     if not os.path.exists(MODEL_PATH):
         error_img = np.zeros((200, 600, 3), dtype=np.uint8)
         cv2.putText(error_img, "No trained model found!", (50, 50), 
@@ -154,7 +154,7 @@ def recognize_asl_sign():
             cv2.putText(frame, f"Confidence: {confidence:.2f}", (10, 70), 
                        cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
         
-        cv2.imshow('ASL Sign Recognition', frame)
+        cv2.imshow('SIBI Sign Recognition', frame)
         
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
@@ -167,13 +167,13 @@ def show_menu():
     menu_img = np.zeros((400, 600, 3), dtype=np.uint8)
     
     # title menu
-    cv2.putText(menu_img, "ASL Hand Sign Recognition System", (50, 50), 
+    cv2.putText(menu_img, "SIBI Hand Sign Recognition System", (50, 50), 
                cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 255), 2)
     
     # option menu
     cv2.putText(menu_img, "1. Train model on existing dataset", (50, 120), 
                cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
-    cv2.putText(menu_img, "2. Start real-time ASL recognition", (50, 180), 
+    cv2.putText(menu_img, "2. Start real-time SIBI recognition", (50, 180), 
                cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
     cv2.putText(menu_img, "3. Exit", (50, 240), 
                cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
@@ -184,20 +184,20 @@ def show_menu():
     cv2.putText(menu_img, "Press ESC to close window", (50, 350), 
                cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 1)
     
-    cv2.imshow("ASL Recognition Menu", menu_img)
+    cv2.imshow("SIBI Recognition Menu", menu_img)
     
     while True:
         key = cv2.waitKey(1) & 0xFF
         if key == ord('1'):
-            cv2.destroyWindow("ASL Recognition Menu")
+            cv2.destroyWindow("SIBI Recognition Menu")
             train_model()
             return 1
         elif key == ord('2'):
-            cv2.destroyWindow("ASL Recognition Menu")
+            cv2.destroyWindow("SIBI Recognition Menu")
             recognize_asl_sign()
             return 2
         elif key == ord('3') or key == 27:  # 27 is ESC key
-            cv2.destroyWindow("ASL Recognition Menu")
+            cv2.destroyWindow("SIBI Recognition Menu")
             return 3
 
 def main():
