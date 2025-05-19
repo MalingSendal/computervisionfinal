@@ -46,3 +46,8 @@ Jumlah dataset yang digunakan dalam proyek ini adalah **2515** gambar isyarat ta
 1. **Clone Repository**:
    ```bash
    git clone https://github.com/username/repository-name.git
+
+
+## Dependencies Needed
+   ```bash
+   pip install opencv-python mediapipe scikit-learn numpy
