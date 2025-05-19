@@ -50,4 +50,4 @@ Jumlah dataset yang digunakan dalam proyek ini adalah **2515** gambar isyarat ta
 
 ## Dependencies Needed
    ```bash
-   pip install opencv-python mediapipe scikit-learn numpy
+   pip install opencv-python mediapipe==0.10.5 scikit-learn numpy
