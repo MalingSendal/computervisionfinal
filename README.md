@@ -3,7 +3,9 @@
 ![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)  
 ![Status](https://img.shields.io/badge/Status-In%20Development-yellow.svg)
 
-![Logo SIBI](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMp1C7pAAvzoAxFwkgn7mzE8k-JSBW5qJITA&s)
+<p align="center">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMp1C7pAAvzoAxFwkgn7mzE8k-JSBW5qJITA&s" alt="Logo SIBI" width="200"/>
+</p>
 
 ## Deskripsi Proyek
 Proyek ini bertujuan untuk mengembangkan sistem yang mampu mendeteksi dan translasi Bahasa Isyarat Indonesia (SIBI) menggunakan teknologi Computer Vision. Sistem ini dirancang untuk membantu komunikasi bagi penyandang disabilitas yang menggunakan bahasa isyarat dan membantu pembelajaran penggunaan bahasa isyarat.
