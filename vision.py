@@ -61,7 +61,7 @@ def load_dataset():
 
 def train_model():
     """Train and save the SIBI recognition model"""
-    # latar hitam untuk training status
+    # black background
     status_img = np.zeros((300, 600, 3), dtype=np.uint8)
     
     cv2.putText(status_img, "Loading dataset...", (50, 50), 
