@@ -1,53 +1,94 @@
-# Bangun Sistem Deteksi dan Translasi Bahasa Isyarat Indonesia (SIBI)
+# SIBI Hand Sign Recognition System
 
-![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)  
+![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)
 ![Status](https://img.shields.io/badge/Status-In%20Development-yellow.svg)
 
 <p align="center">
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMp1C7pAAvzoAxFwkgn7mzE8k-JSBW5qJITA&s" alt="Logo SIBI" width="200"/>
 </p>
 
-## Deskripsi Proyek
-Proyek ini bertujuan untuk mengembangkan sistem yang mampu mendeteksi dan translasi Bahasa Isyarat Indonesia (SIBI) menggunakan teknologi Computer Vision. Sistem ini dirancang untuk membantu komunikasi bagi penyandang disabilitas yang menggunakan bahasa isyarat dan membantu pembelajaran penggunaan bahasa isyarat.
+## 📖 Project Description
 
-## Tujuan
-1. Mengembangkan sistem deteksi tangan dan gerakan isyarat.
-2. Menerjemahkan gerakan isyarat ke dalam bentuk huruf kemudian menjadi teks (translasi).
-3. Membantu integrasi Bahasa Isyarat Indonesia ke dalam sistem digital.
+This project aims to develop a system that can detect and translate Indonesian Sign Language (SIBI) using Computer Vision. The system is designed to assist communication for people with disabilities who use sign language and to support learning SIBI.
 
-## Teknologi yang Digunakan
-- **Bahasa Pemrograman**: Python
-- **Libraries**:
-  - OpenCV
-  - TensorFlow/Keras
-  - MediaPipe
-  - NumPy
-  - Matplotlib
+## ✨ Features
 
-## Fitur
-- Deteksi tangan dan gerakan isyarat melalui webcam.
-- Pengklasifikasian gerakan isyarat SIBI.
-- Translasi isyarat menjadi huruf kemudian menjadi teks.
-- Tampilan antarmuka pengguna yang sederhana untuk menampilkan hasil deteksi.
+- **Hand Detection**: Detects hands and hand gestures using a webcam.
+- **Sign Classification**: Classifies SIBI hand signs into corresponding letters (A-Z, 0-9).
+- **Real-time Recognition**: Recognizes and displays the detected sign in real time.
+- **Model Training**: Train your own model using your dataset of hand sign images.
+- **User Interface**: Simple graphical menu for training and recognition.
 
-## Progres Proyek
+## 🗂️ Project Structure
 
-| Fase | Deskripsi | Status | Persentase |
-|------|-----------|--------|------------|
-| 1    | Pengumpulan dan Pra-Pemrosesan Dataset | Selesai | 100% |
-| 2    | Pengembangan Model Deteksi Isyarat Tangan | Dalam Proses | 70% |
-| 3    | Implementasi Translasi ke Teks | Belum Dimulai | 0% |
-| 4    | Pengujian dan Validasi | Belum Dimulai | 0% |
+```
+datasets/
+  a/, b/, ..., z/, 0/, ..., 9/   # Folders for each sign class containing cropped hand images
+vision.py                        # Main application code
+asl_model.pkl                    # Trained model (generated after training)
+README.md                        # Project documentation
+```
 
-### Jumlah Dataset
-Jumlah dataset yang digunakan dalam proyek ini adalah **2515** gambar isyarat tangan yang mencakup berbagai kategori isyarat dari Bahasa Isyarat Indonesia (SIBI).
+## 🚀 Installation
 
-## Instalasi dan Pengaturan
-1. **Clone Repository**:
+1. **Clone the Repository**
    ```bash
-   git clone https://github.com/username/repository-name.git
+   git clone https://github.com/yourusername/sibi-sign-recognition.git
+   cd sibi-sign-recognition
+   ```
 
-
-## Dependencies Needed
+2. **Install Dependencies**
    ```bash
    pip install opencv-python mediapipe==0.10.5 scikit-learn numpy
+   ```
+
+3. **Prepare Dataset**
+   - Place cropped hand sign images in the appropriate subfolders under `datasets/` (e.g., `datasets/a/`, `datasets/b/`, ..., `datasets/0/`, etc.).
+   - Each folder should contain images for that specific sign.
+
+## 🏃‍♂️ How to Run
+
+1. **Start the Application**
+   ```bash
+   python vision.py
+   ```
+
+2. **Menu Options**
+   - **1**: Train the model using the images in `datasets/`.
+   - **2**: Start real-time SIBI sign recognition using your webcam.
+   - **3** or **ESC**: Exit the application.
+
+## 🛠️ How It Works
+
+- Uses [MediaPipe](https://google.github.io/mediapipe/) to extract hand landmarks from images.
+- Trains an SVM classifier (with scikit-learn) on the extracted landmarks.
+- Recognizes hand signs in real time and displays the predicted letter/number and confidence score.
+
+## 📊 Project Progress
+
+| Phase | Description                              | Status           | Progress   |
+|-------|------------------------------------------|------------------|------------|
+| 1     | Dataset Collection & Preprocessing       | ✅ Completed      | 100%       |
+| 2     | Hand Sign Detection Model Development    | 🟡 In Progress   | 70%        |
+| 3     | Text Translation Implementation          | ⏳ Not Started   | 0%         |
+| 4     | Testing & Validation                     | ⏳ Not Started   | 0%         |
+
+### Dataset Size
+
+- **2515** hand sign images across all classes.
+
+## 📷 Example
+
+![Example](https://user-images.githubusercontent.com/yourusername/example-sibi-demo.gif)
+
+## 🤝 Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request.
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+**Developed with ❤️ for SIBI accessibility.**
