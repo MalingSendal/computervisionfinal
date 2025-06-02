@@ -13,7 +13,7 @@ This project aims to develop a system that can detect and translate Indonesian S
 
 ## ✨ Features
 
-- **Hand Detection**: Detects hands and hand gestures using a webcam.
+- **Hand Detection**: Detects hands and hand gestures using computer webcam.
 - **Sign Classification**: Classifies SIBI hand signs into corresponding letters (A-Z, 0-9).
 - **Real-time Recognition**: Recognizes and displays the detected sign in real time.
 - **Model Training**: Train your own model using your dataset of hand sign images.
@@ -50,7 +50,7 @@ README.md                        # Project documentation
 
 1. **Start the Application**
    ```bash
-   python vision.py
+   python3 vision.py
    ```
 
 2. **Menu Options**
@@ -83,11 +83,11 @@ README.md                        # Project documentation
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please open an issue or submit a pull request.
+Contributions are more than welcome! Please open an issue or submit a pull request.
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+This project is private and not licensed for public/commercial use.
 
 ---
 
