@@ -87,8 +87,8 @@ Contributions are more than welcome! Please open an issue or submit a pull reque
 
 ## 📄 License
 
-This project is private and not licensed for public/commercial use.
+This project is licensed under the MIT License.
 
 ---
 
-**Developed with ❤️ for SIBI accessibility.**
+**Developed by Rendy for better SIBI accessibility.**
