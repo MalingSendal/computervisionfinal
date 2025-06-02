@@ -33,8 +33,8 @@ README.md                        # Project documentation
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/yourusername/sibi-sign-recognition.git
-   cd sibi-sign-recognition
+   git clone https://github.com/MalingSendal/computervisionfinal.git
+   cd computervisionfinal
    ```
 
 2. **Install Dependencies**
