@@ -25,7 +25,7 @@ This project aims to develop a system that can detect and translate Indonesian S
 datasets/
   a/, b/, ..., z/, 0/, ..., 9/   # Folders for each sign class containing cropped hand images
 vision.py                        # Main application code
-asl_model.pkl                    # Trained model (generated after training)
+sibi_model.pkl                    # Trained model (generated after training)
 README.md                        # Project documentation
 ```
 
