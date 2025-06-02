@@ -20,7 +20,7 @@ hands = mp_hands.Hands(static_image_mode=True, max_num_hands=1,
 
 # config
 DATASET_DIR = 'datasets'
-MODEL_PATH = 'asl_model.pkl'
+MODEL_PATH = 'sibi_model.pkl'
 IMAGE_EXTENSIONS = ('.jpg', '.jpeg', '.png')
 
 def extract_landmarks(image):
@@ -113,7 +113,7 @@ def train_model():
     cv2.destroyWindow("Training Status")
     return model
 
-def recognize_asl_sign():
+def recognize_sibi_sign():
     """Real-time SIBI sign spelling from webcam with sentence construction"""
     if not os.path.exists(MODEL_PATH):
         error_img = np.zeros((200, 600, 3), dtype=np.uint8)
@@ -133,8 +133,6 @@ def recognize_asl_sign():
     sentence = ""
     last_sign = ""
     last_time = None
-    space_timer = None
-    end_timer = None
 
     import time
     last_detected_time = time.time()
@@ -150,6 +148,9 @@ def recognize_asl_sign():
         current_time = time.time()
 
         detected_sign = None
+        prediction = ""
+        confidence = 0.0
+
         if landmarks is not None:
             results = hands.process(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
             if results.multi_hand_landmarks:
@@ -158,23 +159,32 @@ def recognize_asl_sign():
                         frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)
             prediction = model.predict([landmarks])[0]
             confidence = np.max(model.predict_proba([landmarks]))
-            if confidence > 0.7:  # Only accept confident predictions
+
+            if confidence > 0.7:
                 detected_sign = prediction
                 last_detected_time = current_time
-
                 # Only add new sign if it's different from the last or after a short pause
                 if (detected_sign != last_sign or (current_time - last_added_time) > 1.0):
                     sentence += detected_sign
                     last_sign = detected_sign
                     last_added_time = current_time
-
-            cv2.putText(frame, f"ASL Sign: {prediction}", (10, 30), 
-                       cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+                cv2.putText(frame, f"SIBI Sign: {prediction}", (10, 30), 
+                            cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+            elif confidence > 0.3:
+                cv2.putText(frame, "Unrecognized sign language", (10, 30), 
+                            cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 165, 255), 2)
+                last_sign = ""
+            else:
+                cv2.putText(frame, "Not a sign language", (10, 30), 
+                            cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+                last_sign = ""
             cv2.putText(frame, f"Confidence: {confidence:.2f}", (10, 70), 
-                       cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
         else:
             # No hand detected
-            pass
+            cv2.putText(frame, "No hand detected", (10, 30), 
+                        cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
+            last_sign = ""
 
         # Handle space and end of sentence
         time_since_last = current_time - last_detected_time
@@ -241,7 +251,7 @@ def show_menu():
             return 1
         elif key == ord('2'):
             cv2.destroyWindow("SIBI Recognition Menu")
-            recognize_asl_sign()
+            recognize_sibi_sign()
             return 2
         elif key == ord('3') or key == 27:  # 27 is ESC key
             cv2.destroyWindow("SIBI Recognition Menu")
@@ -255,7 +265,7 @@ def main():
         info_img = np.zeros((200, 600, 3), dtype=np.uint8)
         cv2.putText(info_img, f"Created {DATASET_DIR} folder", (50, 50), 
                    cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
-        cv2.putText(info_img, "Add ASL images in a/, b/, c/ folders", (50, 100), 
+        cv2.putText(info_img, "Add SIBI images in a/, b/, c/ folders", (50, 100), 
                    cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
         cv2.imshow("Information", info_img)
         cv2.waitKey(3000)
