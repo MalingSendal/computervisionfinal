@@ -69,8 +69,8 @@ README.md                        # Project documentation
 | Phase | Description                              | Status           | Progress   |
 |-------|------------------------------------------|------------------|------------|
 | 1     | Dataset Collection & Preprocessing       | ✅ Completed      | 100%       |
-| 2     | Hand Sign Detection Model Development    | 🟡 In Progress   | 70%        |
-| 3     | Text Translation Implementation          | ⏳ Not Started   | 0%         |
+| 2     | Hand Sign Detection Model Development    | 🟡 In Progress   | 90%        |
+| 3     | Text Translation Implementation          | 🟡 In Progress   | 40%         |
 | 4     | Testing & Validation                     | ⏳ Not Started   | 0%         |
 
 ### Dataset Size
@@ -87,8 +87,8 @@ Contributions are more than welcome! Please open an issue or submit a pull reque
 
 ## 📄 License
 
-This project is private and not licensed for public/commercial use.
+This project is licensed under the MIT License.
 
 ---
 
-**Developed with ❤️ for SIBI accessibility.**
+**Developed by Rendy for better SIBI accessibility.**
