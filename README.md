@@ -22,10 +22,16 @@ This project aims to develop a system that can detect and translate Indonesian S
 ## 🗂️ Project Structure
 
 ```
-datasets/
-  a/, b/, ..., z/, 0/, ..., 9/   # Folders for each sign class containing cropped hand images
+datasets/                        # Folders for each sign class containing cropped hand images
+  a/,
+  b/,
+  ...,
+  z/,
+  0/,
+  ...,
+  9/
 vision.py                        # Main application code
-sibi_model.pkl                    # Trained model (generated after training)
+sibi_model.pkl                   # Trained model (generated after training)
 README.md                        # Project documentation
 ```
 
