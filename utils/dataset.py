@@ -7,7 +7,7 @@ from config import DATASET_DIR, IMAGE_EXTENSIONS
 from utils.preprocessing import extract_landmarks
 
 def load_dataset():
-    X, y = []
+    X = []
     y = []
     for class_name in os.listdir(DATASET_DIR):
         class_dir = os.path.join(DATASET_DIR, class_name)
