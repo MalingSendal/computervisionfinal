@@ -22,14 +22,14 @@ def show_menu():
         if key == ord('1'):
             cv2.destroyWindow("SIBI Recognition Menu")
             train_model()
-            break
+            return 1
         elif key == ord('2'):
             cv2.destroyWindow("SIBI Recognition Menu")
             recognize_sibi_sign()
-            break
+            return 2
         elif key == ord('3') or key == 27:
             cv2.destroyWindow("SIBI Recognition Menu")
-            break
+            return 3
 
 def main():
     if not os.path.exists(DATASET_DIR):
@@ -38,11 +38,13 @@ def main():
         cv2.putText(info_img, f"Created {DATASET_DIR} folder", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
         cv2.putText(info_img, "Add SIBI images in a/, b/, c/ folders", (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
         cv2.imshow("Information", info_img)
-        cv2.waitKey(3000)
+        cv2.waitKey(5000)
         cv2.destroyWindow("Information")
 
     while True:
-        show_menu()
+        choice = show_menu()
+        if choice == 3:
+            break
 
 if __name__ == "__main__":
     main()
