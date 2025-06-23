@@ -160,7 +160,7 @@ def recognize_sibi_sign():
             prediction = model.predict([landmarks])[0]
             confidence = np.max(model.predict_proba([landmarks]))
 
-            if confidence > 0.7:
+            if confidence > 0.2:
                 detected_sign = prediction
                 last_detected_time = current_time
                 # Only add new sign if it's different from the last or after a short pause
@@ -170,7 +170,7 @@ def recognize_sibi_sign():
                     last_added_time = current_time
                 cv2.putText(frame, f"SIBI Sign: {prediction}", (10, 30), 
                             cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
-            elif confidence > 0.3:
+            elif confidence > 0.03:
                 cv2.putText(frame, "Unrecognized sign language", (10, 30), 
                             cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 165, 255), 2)
                 last_sign = ""
