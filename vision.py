@@ -36,8 +36,8 @@ def extract_landmarks(image):
             return np.array(landmarks)
     return None
 
-def load_dataset():
-    """Load dataset from image folders"""
+def load_dataset(max_images_per_class=50):
+    """Load dataset from image folders, limiting to max_images_per_class per class"""
     X = []
     y = []
     
@@ -45,17 +45,17 @@ def load_dataset():
         class_dir = os.path.join(DATASET_DIR, class_name)
         if not os.path.isdir(class_dir):
             continue
-            
-        for image_file in os.listdir(class_dir):
-            if image_file.lower().endswith(IMAGE_EXTENSIONS):
-                image_path = os.path.join(class_dir, image_file)
-                image = cv2.imread(image_path)
-                
-                if image is not None:
-                    landmarks = extract_landmarks(image)
-                    if landmarks is not None:
-                        X.append(landmarks)
-                        y.append(class_name)
+
+        image_files = [f for f in os.listdir(class_dir) if f.lower().endswith(IMAGE_EXTENSIONS)]
+        image_files = image_files[:max_images_per_class]  # Limit to N images
+
+        for image_file in image_files:
+            image_path = os.path.join(class_dir, image_file)
+            image = cv2.imread(image_path)
+            landmarks = extract_landmarks(image)
+            if landmarks is not None:
+                X.append(landmarks)
+                y.append(class_name)
     
     return np.array(X), np.array(y)
 
