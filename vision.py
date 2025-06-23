@@ -36,8 +36,8 @@ def extract_landmarks(image):
             return np.array(landmarks)
     return None
 
-def load_dataset():
-    """Load dataset from image folders"""
+def load_dataset(max_images_per_class=50):
+    """Load dataset from image folders, limiting to max_images_per_class per class"""
     X = []
     y = []
     
@@ -45,17 +45,17 @@ def load_dataset():
         class_dir = os.path.join(DATASET_DIR, class_name)
         if not os.path.isdir(class_dir):
             continue
-            
-        for image_file in os.listdir(class_dir):
-            if image_file.lower().endswith(IMAGE_EXTENSIONS):
-                image_path = os.path.join(class_dir, image_file)
-                image = cv2.imread(image_path)
-                
-                if image is not None:
-                    landmarks = extract_landmarks(image)
-                    if landmarks is not None:
-                        X.append(landmarks)
-                        y.append(class_name)
+
+        image_files = [f for f in os.listdir(class_dir) if f.lower().endswith(IMAGE_EXTENSIONS)]
+        image_files = image_files[:max_images_per_class]  # Limit to N images
+
+        for image_file in image_files:
+            image_path = os.path.join(class_dir, image_file)
+            image = cv2.imread(image_path)
+            landmarks = extract_landmarks(image)
+            if landmarks is not None:
+                X.append(landmarks)
+                y.append(class_name)
     
     return np.array(X), np.array(y)
 
@@ -160,7 +160,7 @@ def recognize_sibi_sign():
             prediction = model.predict([landmarks])[0]
             confidence = np.max(model.predict_proba([landmarks]))
 
-            if confidence > 0.2:
+            if confidence > 0.7:
                 detected_sign = prediction
                 last_detected_time = current_time
                 # Only add new sign if it's different from the last or after a short pause
@@ -170,7 +170,7 @@ def recognize_sibi_sign():
                     last_added_time = current_time
                 cv2.putText(frame, f"SIBI Sign: {prediction}", (10, 30), 
                             cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
-            elif confidence > 0.03:
+            elif confidence > 0.3:
                 cv2.putText(frame, "Unrecognized sign language", (10, 30), 
                             cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 165, 255), 2)
                 last_sign = ""

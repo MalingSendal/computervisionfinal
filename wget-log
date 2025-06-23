@@ -1,0 +1,7 @@
+--2025-06-23 11:48:10--  https://storage.googleapis.com/kaggle-data-sets/2165704/3613392/bundle/archive.zip?X-Goog-Algorithm=GOOG4-RSA-SHA256
+Loaded CA certificate '/etc/ssl/certs/ca-certificates.crt'
+Resolving storage.googleapis.com (storage.googleapis.com)... 142.251.12.207, 74.125.68.207, 74.125.200.207, ...
+Connecting to storage.googleapis.com (storage.googleapis.com)|142.251.12.207|:443... connected.
+HTTP request sent, awaiting response... 400 Bad Request
+2025-06-23 11:48:11 ERROR 400: Bad Request.
+
