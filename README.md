@@ -22,7 +22,7 @@ This project aims to develop a system that can detect and translate Indonesian S
 ## 🗂️ Project Structure
 
 ```
-datasets/                        # Folders for each sign class containing cropped hand images
+asl_datasets/                        # Folders for each sign class containing cropped hand images
   a/,
   b/,
   ...,
@@ -49,7 +49,7 @@ README.md                        # Project documentation
    ```
 
 3. **Prepare Dataset**
-   - Place cropped hand sign images in the appropriate subfolders under `datasets/` (e.g., `datasets/a/`, `datasets/b/`, ..., `datasets/0/`, etc.).
+   - Place cropped hand sign images in the appropriate subfolders under `asl_datasets/` (e.g., `asl_datasets/a/`, `asl_datasets/b/`, ..., `asl_datasets/0/`, etc.).
    - Each folder should contain images for that specific sign.
 
 ## 🏃‍♂️ How to Run
@@ -60,7 +60,7 @@ README.md                        # Project documentation
    ```
 
 2. **Menu Options**
-   - **1**: Train the model using the images in `datasets/`.
+   - **1**: Train the model using the images in `asl_datasets/`.
    - **2**: Start real-time SIBI sign recognition using your webcam.
    - **3** or **ESC**: Exit the application.
 
@@ -75,9 +75,9 @@ README.md                        # Project documentation
 | Phase | Description                              | Status           | Progress   |
 |-------|------------------------------------------|------------------|------------|
 | 1     | Dataset Collection & Preprocessing       | ✅ Completed      | 100%       |
-| 2     | Hand Sign Detection Model Development    | 🟡 In Progress   | 90%        |
-| 3     | Text Translation Implementation          | 🟡 In Progress   | 40%         |
-| 4     | Testing & Validation                     | ⏳ Not Started   | 0%         |
+| 2     | Hand Sign Detection Model Development    | 🟡 In Progress   | 70%        |
+| 3     | Text Translation Implementation          | 🟡 In Progress   | 100%         |
+| 4     | Testing & Validation                     | ⏳ Not Started   | 100%         |
 
 ### Dataset Size
 
