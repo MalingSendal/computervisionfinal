@@ -19,7 +19,7 @@ hands = mp_hands.Hands(static_image_mode=True, max_num_hands=1,
                       min_detection_confidence=0.5)
 
 # config
-DATASET_DIR = 'datasets'
+DATASET_DIR = 'asl_dataset'
 MODEL_PATH = 'sibi_model.pkl'
 IMAGE_EXTENSIONS = ('.jpg', '.jpeg', '.png')
 
@@ -36,8 +36,8 @@ def extract_landmarks(image):
             return np.array(landmarks)
     return None
 
-def load_dataset(max_images_per_class=50):
-    """Load dataset from image folders, limiting to max_images_per_class per class"""
+def load_dataset():
+    """Load dataset from .npy landmark files in each class folder"""
     X = []
     y = []
     
@@ -46,16 +46,15 @@ def load_dataset(max_images_per_class=50):
         if not os.path.isdir(class_dir):
             continue
 
-        image_files = [f for f in os.listdir(class_dir) if f.lower().endswith(IMAGE_EXTENSIONS)]
-        image_files = image_files[:max_images_per_class]  # Limit to N images
+        # Load all .npy files in the class directory
+        npy_files = [f for f in os.listdir(class_dir) if f.lower().endswith('.npy')]
 
-        for image_file in image_files:
-            image_path = os.path.join(class_dir, image_file)
-            image = cv2.imread(image_path)
-            landmarks = extract_landmarks(image)
-            if landmarks is not None:
-                X.append(landmarks)
-                y.append(class_name)
+        for npy_file in npy_files:
+            npy_path = os.path.join(class_dir, npy_file)
+            landmarks = np.load(npy_path)
+            landmarks = landmarks.flatten()
+            X.append(landmarks)
+            y.append(class_name)
     
     return np.array(X), np.array(y)
 
@@ -265,7 +264,7 @@ def main():
         info_img = np.zeros((200, 600, 3), dtype=np.uint8)
         cv2.putText(info_img, f"Created {DATASET_DIR} folder", (50, 50), 
                    cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
-        cv2.putText(info_img, "Add SIBI images in a/, b/, c/ folders", (50, 100), 
+        cv2.putText(info_img, "Add SIBI .npy landmark files in a/, b/, c/ folders", (50, 100), 
                    cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
         cv2.imshow("Information", info_img)
         cv2.waitKey(3000)
