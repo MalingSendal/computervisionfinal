@@ -75,9 +75,9 @@ README.md                        # Project documentation
 | Phase | Description                              | Status           | Progress   |
 |-------|------------------------------------------|------------------|------------|
 | 1     | Dataset Collection & Preprocessing       | ✅ Completed      | 100%       |
-| 2     | Hand Sign Detection Model Development    | 🟡 In Progress   | 70%        |
-| 3     | Text Translation Implementation          | 🟡 In Progress   | 100%         |
-| 4     | Testing & Validation                     | ⏳ Not Started   | 100%         |
+| 2     | Hand Sign Detection Model Development    | 🟡 Low Confidence   | 70%        |
+| 3     | Text Translation Implementation          | ✅ Completed   | 100%         |
+| 4     | Testing & Validation                     | ✅ Completed   | 100%         |
 
 ### Dataset Size
 
